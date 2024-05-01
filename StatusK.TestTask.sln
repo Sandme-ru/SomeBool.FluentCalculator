@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusK.TestTask.SomeBool", "StatusK.TestTask.SomeBool\StatusK.TestTask.SomeBool.csproj", "{CF7E4A39-E6C4-4401-B268-E5DC08268B33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusK.TestTask.FluentCalculator", "StatusK.TestTask.FluentCalculator\StatusK.TestTask.FluentCalculator.csproj", "{25BEC59B-ED4F-4520-820C-53D5E7F495D5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF7E4A39-E6C4-4401-B268-E5DC08268B33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF7E4A39-E6C4-4401-B268-E5DC08268B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF7E4A39-E6C4-4401-B268-E5DC08268B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF7E4A39-E6C4-4401-B268-E5DC08268B33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25BEC59B-ED4F-4520-820C-53D5E7F495D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25BEC59B-ED4F-4520-820C-53D5E7F495D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25BEC59B-ED4F-4520-820C-53D5E7F495D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25BEC59B-ED4F-4520-820C-53D5E7F495D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7BF78C9E-3ACD-4473-AE5C-F0D5109A7F99}
+	EndGlobalSection
+EndGlobal
