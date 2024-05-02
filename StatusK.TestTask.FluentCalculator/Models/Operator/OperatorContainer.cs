@@ -1,22 +1,23 @@
 ﻿namespace StatusK.TestTask.FluentCalculator.Models.Operator;
 
-public class OperatorContainer
+public static class OperatorContainer
 {
-    public static List<Operator?> Operators = new List<Operator?>();
+    private static readonly List<Operator?> Operators = new();
 
-    public static void AddOperator(Operator? @operator)
+    private const int HighPriority = 2;
+
+    private const int LowPriority = 1;
+
+    static OperatorContainer()
     {
-        Operators.Add(@operator);
+        Operators.Add(new Operator(HighPriority, OperatorConstants.Times));
+        Operators.Add(new Operator(HighPriority, OperatorConstants.DividedBy));
+        Operators.Add(new Operator(LowPriority, OperatorConstants.Plus));
+        Operators.Add(new Operator(LowPriority, OperatorConstants.Minus));
     }
 
     public static Operator? FindOperator(string s)
     {
-        foreach (var @operator in Operators)
-        {
-            if(@operator != null && @operator.Symbol == s)
-                return @operator;
-        }
-
-        return null;
+        return Operators.FirstOrDefault(op => op != null && op.Symbol == s);
     }
 }
