@@ -3,6 +3,7 @@
 public class Program
 {
     private static bool _value;
+
     private static bool SomeBool
     {
         get
