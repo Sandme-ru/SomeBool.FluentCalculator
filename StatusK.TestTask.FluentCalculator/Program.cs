@@ -21,7 +21,7 @@ namespace StatusK.TestTask.FluentCalculator
         public FluentCalculator Seven => Value("7");
         public FluentCalculator Eight => Value("8");
         public FluentCalculator Nine => Value("9");
-        public FluentCalculator Ten => Value("10");
+        public FluentCalculator Ten => Value("9+1");
 
         public FluentCalculator Plus => Operator("+");
         public FluentCalculator Minus => Operator("-");
@@ -70,7 +70,6 @@ namespace StatusK.TestTask.FluentCalculator
                     }
                 }
             }
-
             return this;
         }
 
@@ -91,6 +90,11 @@ namespace StatusK.TestTask.FluentCalculator
 
                     if (c == '+')
                     {
+                        if (_operatorStack.Count == 0 || _operatorStack.Count == 1)
+                        {
+                            throw new InvalidOperationException("The last character in the input string cannot be an operand");
+                        }
+
                         _rightOperand = Convert.ToInt32(_operatorStack.Pop());
                         _leftOperand = _operatorStack.Count > 0 ? Convert.ToInt32(_operatorStack.Pop()) : 0;
 
@@ -99,6 +103,11 @@ namespace StatusK.TestTask.FluentCalculator
                     }
                     else if (c == '-')
                     {
+                        if (_operatorStack.Count == 0 || _operatorStack.Count == 1)
+                        {
+                            throw new InvalidOperationException("The last character in the input string cannot be an operand");
+                        }
+
                         _rightOperand = Convert.ToInt32(_operatorStack.Pop());
                         _leftOperand = _operatorStack.Count > 0 ? Convert.ToInt32(_operatorStack.Pop()) : 0;
 
@@ -107,6 +116,11 @@ namespace StatusK.TestTask.FluentCalculator
                     }
                     else if (c == '*')
                     {
+                        if (_operatorStack.Count == 0 || _operatorStack.Count == 1)
+                        {
+                            throw new InvalidOperationException("The last character in the input string cannot be an operand");
+                        }
+
                         _rightOperand = Convert.ToInt32(_operatorStack.Pop());
                         _leftOperand = _operatorStack.Count > 0 ? Convert.ToInt32(_operatorStack.Pop()) : 0;
 
@@ -115,6 +129,11 @@ namespace StatusK.TestTask.FluentCalculator
                     }
                     else if (c == '/')
                     {
+                        if (_operatorStack.Count == 0 || _operatorStack.Count == 1)
+                        {
+                            throw new InvalidOperationException("The last character in the input string cannot be an operand");
+                        }
+
                         _rightOperand = Convert.ToInt32(_operatorStack.Pop());
                         _leftOperand = _operatorStack.Count > 0 ? Convert.ToInt32(_operatorStack.Pop()) : 0;
 
@@ -125,6 +144,9 @@ namespace StatusK.TestTask.FluentCalculator
                     _operatorStack.Push(_tempString.ToString());
                 }
             }
+            _operatorStack.Clear();
+            _inputString.Clear();
+
             return Convert.ToInt32(_tempString.ToString());
         }
 
@@ -173,14 +195,14 @@ namespace StatusK.TestTask.FluentCalculator
 
             FluentCalculator calc = new FluentCalculator();
 
-            int result1 = calc.Times.One.Plus.Two * 10;
-            Console.WriteLine(result1);
+            //int result1 = calc.Minus.One.Plus.Two * 10;
+            //Console.WriteLine(result1);
 
-            //int result2 = calc.One.Plus.Ten;
-            //Console.WriteLine(result2);
+            int result2 = calc.One.Plus.Ten;
+            Console.WriteLine(result2);
 
-            //int result3 = calc.One.Plus.Ten;
-            //Console.WriteLine(result3);
+            int result3 = calc.Two.Plus.Ten.Plus;
+            Console.WriteLine(result3);
         }
     }
 }
