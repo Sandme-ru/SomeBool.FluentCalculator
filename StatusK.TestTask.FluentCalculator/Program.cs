@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using System.ComponentModel;
+﻿using System.Text;
 using StatusK.TestTask.FluentCalculator.Models.Operator;
 
 namespace StatusK.TestTask.FluentCalculator
@@ -14,9 +10,6 @@ namespace StatusK.TestTask.FluentCalculator
         private StringBuilder _tempString = new();
         private int _leftOperand;
         private int _rightOperand;
-
-        private readonly Queue<int> _operands = new Queue<int>();
-        private readonly Queue<string> _operators = new Queue<string>();
 
         public FluentCalculator Zero => Value("0");
         public FluentCalculator One => Value("1");
@@ -98,9 +91,11 @@ namespace StatusK.TestTask.FluentCalculator
 
                     if (c == '+')
                     {
+                        _rightOperand = Convert.ToInt32(_operatorStack.Pop());
+                        _leftOperand = _operatorStack.Count > 0 ? Convert.ToInt32(_operatorStack.Pop()) : 0;
+
                         _tempString.Clear();
-                        _tempString.Append(Convert.ToString(Convert.ToInt32(_operatorStack.Pop()) +
-                                                            Convert.ToInt32(_operatorStack.Pop())));
+                        _tempString.Append(Convert.ToString(_leftOperand + _rightOperand));
                     }
                     else if (c == '-')
                     {
@@ -112,14 +107,16 @@ namespace StatusK.TestTask.FluentCalculator
                     }
                     else if (c == '*')
                     {
+                        _rightOperand = Convert.ToInt32(_operatorStack.Pop());
+                        _leftOperand = _operatorStack.Count > 0 ? Convert.ToInt32(_operatorStack.Pop()) : 0;
+
                         _tempString.Clear();
-                        _tempString.Append(Convert.ToString(Convert.ToInt32(_operatorStack.Pop()) *
-                                                            Convert.ToInt32(_operatorStack.Pop())));
+                        _tempString.Append(Convert.ToString(_leftOperand * _rightOperand));
                     }
                     else if (c == '/')
                     {
                         _rightOperand = Convert.ToInt32(_operatorStack.Pop());
-                        _leftOperand = Convert.ToInt32(_operatorStack.Pop());
+                        _leftOperand = _operatorStack.Count > 0 ? Convert.ToInt32(_operatorStack.Pop()) : 0;
 
                         _tempString.Clear();
                         _tempString.Append(Convert.ToString(_leftOperand / _rightOperand));
@@ -176,7 +173,7 @@ namespace StatusK.TestTask.FluentCalculator
 
             FluentCalculator calc = new FluentCalculator();
 
-            int result1 = calc.Minus.One.Plus.Two * 10;
+            int result1 = calc.Times.One.Plus.Two * 10;
             Console.WriteLine(result1);
 
             //int result2 = calc.One.Plus.Ten;
