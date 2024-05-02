@@ -1,40 +1,19 @@
-﻿using System;
+﻿namespace StatusK.TestTask.SomeBool;
 
 public class Program
 {
-    public class MyBool(bool initialValue)
+    private static bool _value;
+    private static bool SomeBool
     {
-        private bool value = initialValue;
-
-        public static implicit operator bool(MyBool myBool)
+        get
         {
-            return myBool.value;
-        }
-
-        public static bool operator ==(MyBool myBool, bool compareBool)
-        {
-            return true; // Всегда возвращаем true
-        }
-
-        public static bool operator !=(MyBool myBool, bool compareBool)
-        {
-            return true; // Всегда возвращаем true
-        }
-
-        public static bool operator ==(bool compareBool, MyBool myBool)
-        {
-            return true; // Всегда возвращаем true
-        }
-
-        public static bool operator !=(bool compareBool, MyBool myBool)
-        {
-            return true; // Всегда возвращаем true
+            _value = !_value;
+            return _value;
         }
     }
 
     public static void Main()
     {
-        MyBool someBool = new MyBool(true);
-        Console.WriteLine(someBool == true && someBool == false); // Output: True
+        Console.WriteLine(SomeBool == true && SomeBool == false);
     }
 }
